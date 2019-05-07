@@ -1,0 +1,64 @@
+{
+    "type": "object",
+    "properties": {
+        "Action": {
+            "required": true,
+            "type": "string"
+        },
+        "Version": {
+            "required": true,
+            "type": "string"
+        },
+        "requestBody": {
+            "properties": {
+                "ConsumerName": {
+                    "description": "For a given Kinesis data stream, each consumer must have a unique name. However, consumer names don't have to be unique across data streams.",
+                    "maxLength": 128,
+                    "minLength": 1,
+                    "pattern": "[a-zA-Z0-9_.-]+",
+                    "type": "string"
+                },
+                "StreamARN": {
+                    "description": "The ARN of the Kinesis data stream that you want to register the consumer with. For more info, see <a href=\"https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html#arn-syntax-kinesis-streams\">Amazon Resource Names (ARNs) and AWS Service Namespaces</a>.",
+                    "maxLength": 2048,
+                    "minLength": 1,
+                    "pattern": "arn:aws.*:kinesis:.*:\\d{12}:stream/.*",
+                    "type": "string"
+                }
+            },
+            "required": [
+                "StreamARN",
+                "ConsumerName"
+            ],
+            "type": "object"
+        },
+        "X_Amz_Content_Sha256": {
+            "required": false,
+            "type": "string"
+        },
+        "X_Amz_Date": {
+            "required": false,
+            "type": "string"
+        },
+        "X_Amz_Algorithm": {
+            "required": false,
+            "type": "string"
+        },
+        "X_Amz_Credential": {
+            "required": false,
+            "type": "string"
+        },
+        "X_Amz_Security_Token": {
+            "required": false,
+            "type": "string"
+        },
+        "X_Amz_Signature": {
+            "required": false,
+            "type": "string"
+        },
+        "X_Amz_SignedHeaders": {
+            "required": false,
+            "type": "string"
+        }
+    }
+}

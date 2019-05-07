@@ -1,0 +1,69 @@
+{
+    "type": "object",
+    "properties": {
+        "Action": {
+            "required": true,
+            "type": "string"
+        },
+        "Version": {
+            "required": true,
+            "type": "string"
+        },
+        "requestBody": {
+            "description": "Represents the input for <code>ListTagsForStream</code>.",
+            "properties": {
+                "ExclusiveStartTagKey": {
+                    "description": "The key to use as the starting point for the list of tags. If this parameter is set, <code>ListTagsForStream</code> gets all tags that occur after <code>ExclusiveStartTagKey</code>. ",
+                    "maxLength": 128,
+                    "minLength": 1,
+                    "type": "string"
+                },
+                "Limit": {
+                    "description": "The number of tags to return. If this number is less than the total number of tags associated with the stream, <code>HasMoreTags</code> is set to <code>true</code>. To list additional tags, set <code>ExclusiveStartTagKey</code> to the last key in the response.",
+                    "maximum": 50,
+                    "minimum": 1,
+                    "type": "integer"
+                },
+                "StreamName": {
+                    "description": "The name of the stream.",
+                    "maxLength": 128,
+                    "minLength": 1,
+                    "pattern": "[a-zA-Z0-9_.-]+",
+                    "type": "string"
+                }
+            },
+            "required": [
+                "StreamName"
+            ],
+            "type": "object"
+        },
+        "X_Amz_Content_Sha256": {
+            "required": false,
+            "type": "string"
+        },
+        "X_Amz_Date": {
+            "required": false,
+            "type": "string"
+        },
+        "X_Amz_Algorithm": {
+            "required": false,
+            "type": "string"
+        },
+        "X_Amz_Credential": {
+            "required": false,
+            "type": "string"
+        },
+        "X_Amz_Security_Token": {
+            "required": false,
+            "type": "string"
+        },
+        "X_Amz_Signature": {
+            "required": false,
+            "type": "string"
+        },
+        "X_Amz_SignedHeaders": {
+            "required": false,
+            "type": "string"
+        }
+    }
+}

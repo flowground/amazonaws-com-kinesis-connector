@@ -1,0 +1,87 @@
+{
+    "type": "object",
+    "properties": {
+        "Action": {
+            "required": true,
+            "type": "string"
+        },
+        "Version": {
+            "required": true,
+            "type": "string"
+        },
+        "requestBody": {
+            "description": "Represents the input for <code>GetShardIterator</code>.",
+            "properties": {
+                "ShardId": {
+                    "description": "The shard ID of the Kinesis Data Streams shard to get the iterator for.",
+                    "maxLength": 128,
+                    "minLength": 1,
+                    "pattern": "[a-zA-Z0-9_.-]+",
+                    "type": "string"
+                },
+                "ShardIteratorType": {
+                    "description": "<p>Determines how the shard iterator is used to start reading data records from the shard.</p> <p>The following are the valid Amazon Kinesis shard iterator types:</p> <ul> <li> <p>AT_SEQUENCE_NUMBER - Start reading from the position denoted by a specific sequence number, provided in the value <code>StartingSequenceNumber</code>.</p> </li> <li> <p>AFTER_SEQUENCE_NUMBER - Start reading right after the position denoted by a specific sequence number, provided in the value <code>StartingSequenceNumber</code>.</p> </li> <li> <p>AT_TIMESTAMP - Start reading from the position denoted by a specific time stamp, provided in the value <code>Timestamp</code>.</p> </li> <li> <p>TRIM_HORIZON - Start reading at the last untrimmed record in the shard in the system, which is the oldest data record in the shard.</p> </li> <li> <p>LATEST - Start reading just after the most recent record in the shard, so that you always read the most recent data in the shard.</p> </li> </ul>",
+                    "enum": [
+                        "AT_SEQUENCE_NUMBER",
+                        "AFTER_SEQUENCE_NUMBER",
+                        "TRIM_HORIZON",
+                        "LATEST",
+                        "AT_TIMESTAMP"
+                    ],
+                    "type": "string"
+                },
+                "StartingSequenceNumber": {
+                    "description": "The sequence number of the data record in the shard from which to start reading. Used with shard iterator type AT_SEQUENCE_NUMBER and AFTER_SEQUENCE_NUMBER.",
+                    "pattern": "0|([1-9]\\d{0,128})",
+                    "type": "string"
+                },
+                "StreamName": {
+                    "description": "The name of the Amazon Kinesis data stream.",
+                    "maxLength": 128,
+                    "minLength": 1,
+                    "pattern": "[a-zA-Z0-9_.-]+",
+                    "type": "string"
+                },
+                "Timestamp": {
+                    "description": "The time stamp of the data record from which to start reading. Used with shard iterator type AT_TIMESTAMP. A time stamp is the Unix epoch date with precision in milliseconds. For example, <code>2016-04-04T19:58:46.480-00:00</code> or <code>1459799926.480</code>. If a record with this exact time stamp does not exist, the iterator returned is for the next (later) record. If the time stamp is older than the current trim horizon, the iterator returned is for the oldest untrimmed data record (TRIM_HORIZON).",
+                    "format": "date-time",
+                    "type": "string"
+                }
+            },
+            "required": [
+                "StreamName",
+                "ShardId",
+                "ShardIteratorType"
+            ],
+            "type": "object"
+        },
+        "X_Amz_Content_Sha256": {
+            "required": false,
+            "type": "string"
+        },
+        "X_Amz_Date": {
+            "required": false,
+            "type": "string"
+        },
+        "X_Amz_Algorithm": {
+            "required": false,
+            "type": "string"
+        },
+        "X_Amz_Credential": {
+            "required": false,
+            "type": "string"
+        },
+        "X_Amz_Security_Token": {
+            "required": false,
+            "type": "string"
+        },
+        "X_Amz_Signature": {
+            "required": false,
+            "type": "string"
+        },
+        "X_Amz_SignedHeaders": {
+            "required": false,
+            "type": "string"
+        }
+    }
+}

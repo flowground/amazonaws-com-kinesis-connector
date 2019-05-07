@@ -1,0 +1,71 @@
+{
+    "type": "object",
+    "properties": {
+        "Action": {
+            "required": true,
+            "type": "string"
+        },
+        "Version": {
+            "required": true,
+            "type": "string"
+        },
+        "requestBody": {
+            "description": "Represents the input for <code>SplitShard</code>.",
+            "properties": {
+                "NewStartingHashKey": {
+                    "description": "A hash key value for the starting hash key of one of the child shards created by the split. The hash key range for a given shard constitutes a set of ordered contiguous positive integers. The value for <code>NewStartingHashKey</code> must be in the range of hash keys being mapped into the shard. The <code>NewStartingHashKey</code> hash key value and all higher hash key values in hash key range are distributed to one of the child shards. All the lower hash key values in the range are distributed to the other child shard.",
+                    "pattern": "0|([1-9]\\d{0,38})",
+                    "type": "string"
+                },
+                "ShardToSplit": {
+                    "description": "The shard ID of the shard to split.",
+                    "maxLength": 128,
+                    "minLength": 1,
+                    "pattern": "[a-zA-Z0-9_.-]+",
+                    "type": "string"
+                },
+                "StreamName": {
+                    "description": "The name of the stream for the shard split.",
+                    "maxLength": 128,
+                    "minLength": 1,
+                    "pattern": "[a-zA-Z0-9_.-]+",
+                    "type": "string"
+                }
+            },
+            "required": [
+                "StreamName",
+                "ShardToSplit",
+                "NewStartingHashKey"
+            ],
+            "type": "object"
+        },
+        "X_Amz_Content_Sha256": {
+            "required": false,
+            "type": "string"
+        },
+        "X_Amz_Date": {
+            "required": false,
+            "type": "string"
+        },
+        "X_Amz_Algorithm": {
+            "required": false,
+            "type": "string"
+        },
+        "X_Amz_Credential": {
+            "required": false,
+            "type": "string"
+        },
+        "X_Amz_Security_Token": {
+            "required": false,
+            "type": "string"
+        },
+        "X_Amz_Signature": {
+            "required": false,
+            "type": "string"
+        },
+        "X_Amz_SignedHeaders": {
+            "required": false,
+            "type": "string"
+        }
+    }
+}

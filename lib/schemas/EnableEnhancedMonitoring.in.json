@@ -1,0 +1,77 @@
+{
+    "type": "object",
+    "properties": {
+        "Action": {
+            "required": true,
+            "type": "string"
+        },
+        "Version": {
+            "required": true,
+            "type": "string"
+        },
+        "requestBody": {
+            "description": "Represents the input for <a>EnableEnhancedMonitoring</a>.",
+            "properties": {
+                "ShardLevelMetrics": {
+                    "description": "<p>List of shard-level metrics to enable.</p> <p>The following are the valid shard-level metrics. The value \"<code>ALL</code>\" enables every metric.</p> <ul> <li> <p> <code>IncomingBytes</code> </p> </li> <li> <p> <code>IncomingRecords</code> </p> </li> <li> <p> <code>OutgoingBytes</code> </p> </li> <li> <p> <code>OutgoingRecords</code> </p> </li> <li> <p> <code>WriteProvisionedThroughputExceeded</code> </p> </li> <li> <p> <code>ReadProvisionedThroughputExceeded</code> </p> </li> <li> <p> <code>IteratorAgeMilliseconds</code> </p> </li> <li> <p> <code>ALL</code> </p> </li> </ul> <p>For more information, see <a href=\"http://docs.aws.amazon.com/kinesis/latest/dev/monitoring-with-cloudwatch.html\">Monitoring the Amazon Kinesis Data Streams Service with Amazon CloudWatch</a> in the <i>Amazon Kinesis Data Streams Developer Guide</i>.</p>",
+                    "items": {
+                        "enum": [
+                            "IncomingBytes",
+                            "IncomingRecords",
+                            "OutgoingBytes",
+                            "OutgoingRecords",
+                            "WriteProvisionedThroughputExceeded",
+                            "ReadProvisionedThroughputExceeded",
+                            "IteratorAgeMilliseconds",
+                            "ALL"
+                        ],
+                        "type": "string"
+                    },
+                    "maxItems": 7,
+                    "minItems": 1,
+                    "type": "array"
+                },
+                "StreamName": {
+                    "description": "The name of the stream for which to enable enhanced monitoring.",
+                    "maxLength": 128,
+                    "minLength": 1,
+                    "pattern": "[a-zA-Z0-9_.-]+",
+                    "type": "string"
+                }
+            },
+            "required": [
+                "StreamName",
+                "ShardLevelMetrics"
+            ],
+            "type": "object"
+        },
+        "X_Amz_Content_Sha256": {
+            "required": false,
+            "type": "string"
+        },
+        "X_Amz_Date": {
+            "required": false,
+            "type": "string"
+        },
+        "X_Amz_Algorithm": {
+            "required": false,
+            "type": "string"
+        },
+        "X_Amz_Credential": {
+            "required": false,
+            "type": "string"
+        },
+        "X_Amz_Security_Token": {
+            "required": false,
+            "type": "string"
+        },
+        "X_Amz_Signature": {
+            "required": false,
+            "type": "string"
+        },
+        "X_Amz_SignedHeaders": {
+            "required": false,
+            "type": "string"
+        }
+    }
+}
